@@ -1,123 +1,172 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yan Li · Demo Homepage</title>
+  <title>Yan Li | Head of Multimodal AI and AIGC, JD.COM</title>
+  <meta name="description" content="Yan Li - AI researcher and technical leader specializing in computer vision and generative AI." />
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --line: #273449;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
+      --bg: #0b1220;
+      --card: #0f1a2f;
+      --line: #263857;
+      --text: #e7eefc;
+      --muted: #9fb2d4;
+      --accent: #4cc9f0;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: linear-gradient(180deg, #0b1220, var(--bg));
       color: var(--text);
-      line-height: 1.6;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: radial-gradient(circle at 10% 0%, #1b2f5a 0%, var(--bg) 45%), var(--bg);
+      line-height: 1.7;
     }
-    .wrap {
-      width: min(920px, 92%);
-      margin: 40px auto;
+    .container {
+      width: min(1080px, 92%);
+      margin: 0 auto;
+      padding: 30px 0 48px;
       display: grid;
       gap: 16px;
     }
     .card {
-      background: rgba(17, 24, 39, 0.92);
+      background: linear-gradient(155deg, #0f1a2f, #142445);
       border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 20px;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
     }
     h1, h2 { margin: 0 0 10px; }
     h1 { font-size: 30px; }
-    h2 { font-size: 18px; color: #dbeafe; }
-    .muted { color: var(--muted); }
-    .row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    h2 {
+      font-size: 18px;
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+    }
+    .headline {
+      margin: 4px 0 10px;
+      color: #d8e4ff;
+      font-size: 17px;
+      font-weight: 600;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .actions {
       margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .btn {
-      border: 1px solid #334155;
+      border: 1px solid #3a518e;
+      background: #132043;
+      color: #e8efff;
       border-radius: 10px;
       padding: 8px 12px;
-      color: var(--text);
       text-decoration: none;
       font-size: 14px;
-      background: #0b1322;
     }
     .btn.primary {
-      border-color: #0ea5e9;
-      background: #082f49;
+      border-color: #4fb9ea;
+      background: #123256;
     }
-    ul {
-      margin: 0;
-      padding-left: 18px;
+    p { margin: 0; }
+    .about-text { color: #d9e4ff; font-size: 15px; }
+    .timeline {
+      display: grid;
+      gap: 14px;
     }
-    .badge {
-      display: inline-block;
+    .timeline-item {
+      border-left: 2px solid #3f5c98;
+      padding-left: 12px;
+    }
+    .timeline-item .role {
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .timeline-item .time,
+    .timeline-item .location {
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .timeline-item .desc {
       margin-top: 8px;
-      padding: 4px 10px;
-      border: 1px solid #0ea5e9;
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 12px;
+      color: #d2ddfa;
+      font-size: 14px;
+    }
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+    @media (max-width: 860px) {
+      .container { padding-top: 18px; }
+      h1 { font-size: 24px; }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <main class="container">
     <section class="card">
-      <h1 id="name">Yan Li</h1>
-      <p class="muted" id="headline">Personal Homepage · Demo Version</p>
-      <p id="intro">你好，这是一版“流程验证用”的极简主页。确认流程跑通后，我可以继续升级为完整作品集风格。</p>
-      <span class="badge">Flow Test Passed ✅</span>
-      <div class="row">
-        <a id="linkedin" class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a id="github" class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
-        <a id="email" class="btn" href="mailto:you@example.com">Email</a>
+      <h1>Yan Li</h1>
+      <div class="headline">Head of Multimodal AI and AIGC, JD.COM</div>
+      <div class="meta">Beijing, China · On-site</div>
+      <div class="actions">
+        <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="mailto:you@example.com">Email</a>
       </div>
     </section>
 
     <section class="card">
-      <h2>What I Do</h2>
-      <ul id="skills"></ul>
+      <h2>About</h2>
+      <p class="about-text">
+        As an AI researcher and technical leader, I specialize in computer vision and generative AI. My career began with a BSc in Computer Science from Nankai University (2010), followed by a Ph.D. from the Institute of Computing Technology, Chinese Academy of Sciences (2017), where my research focused on computer vision, deep learning, and facial recognition. My doctoral work was recognized with the Director's Special Award — the institute's highest honor for outstanding academic contributions.
+      </p>
+      <br />
+      <p class="about-text">
+        After my Ph.D., I joined Tencent WeChat as a Researcher, leading multimodal content understanding for core features including Moments and Favorites. In 2019, as a founding member of WeChat Channels (Video Accounts), I designed its full-scene content intelligence framework, covering short-video analysis, live-streaming comprehension, and user behavior modeling.
+      </p>
+      <br />
+      <p class="about-text">
+        In 2021, I moved to Kuaishou to lead content understanding for its global expansion, serving regions such as Southeast Asia, Latin America, and the Middle East. Since 2023, I have been leading the image generation project for Kuaishou's Kling (可灵) AI, driving end-to-end development of its text-to-image foundation model from research to product integration.
+      </p>
+      <br />
+      <p class="about-text">
+        In 2025, I joined JD.com as the Head of Multimodal AI and AIGC. I lead initiatives across product, operations, algorithm, and engineering to redefine e-commerce experiences. This includes developing multimodal understanding and controllable generation models, launching the JD AIGC platform for merchants, and advancing virtual try-on with personalized outfit recommendations. We are now pioneering the next paradigm of dynamic, AI-generated product content tailored to individual user preferences.
+      </p>
+      <br />
+      <p class="about-text">
+        My experience includes building and mentoring technical teams to deliver scalable AI solutions. I am committed to advancing AGI with ethical deployment, and welcome collaborations to shape the future of intelligent systems.
+      </p>
     </section>
 
     <section class="card">
-      <h2>Next Step</h2>
-      <p class="muted">告诉我你想要的风格（比如：极简白色 / 深色科技 / 产品作品集），我会直接升级到正式版首页。</p>
+      <h2>Experience</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="role">Head of Multimodal AI and AIGC · JD.com</div>
+          <div class="time">March 2025 - Present</div>
+          <div class="location">Beijing, China · On-site</div>
+          <p class="desc">
+            I currently lead the Multimodal AI and AIGC initiatives at JD.com, overseeing product strategy, operations, design, algorithm development, and engineering R&D. On the algorithm side, my team focuses on advancing e-commerce multimodal understanding models, controllable visual generation models, and unified models tailored for online retail scenarios. Through our product efforts, we launched JD Oxygen Vision, an AIGC-powered platform designed to help merchants create, test, and optimize product visuals and advertising materials. The platform now serves a wide range of sellers on JD.com. We've also introduced a virtual try-on capability that enables customers to visualize clothing fit and receive personalized outfit recommendations. Looking forward, we're working toward the next-generation content paradigm in e-commerce: fully personalized, AI-generated visual materials for each user. By delivering unique product visuals tailored to individual preferences, we aim to enhance the shopping experience while driving better conversion and business growth for our merchants.
+          </p>
+        </article>
+
+        <article class="timeline-item">
+          <div class="role">Senior Staff Algorithm Engineer / Director · Kling AI (Kuaishou)</div>
+          <div class="time">December 2022 - March 2025</div>
+          <div class="location">Beijing, China · On-site</div>
+          <p class="desc">
+            As Tech Lead at Kuaishou's Kling AI Team, I led the development of data infrastructure for collecting, cleaning, and managing multi-billion-scale high-quality image/video datasets. My team engineered the foundational text-to-image generative model (Kolors), innovating core components including multilingual text encoders, variational autoencoders (VAE), and diffusion model architectures. Leveraging this proprietary technology, we developed ID-preserving controllable image generation and e-commerce AIGC solutions—such as virtual try-on capabilities. To date, our Kolors model has generated over 340 million premium images for diverse applications, serving millions of users while ensuring consistent brand identity in generated assets.
+          </p>
+        </article>
+      </div>
     </section>
+
+    <p class="note">Updated in English as requested.</p>
   </main>
-
-  <script>
-    const profile = {
-      name: "Yan Li",
-      headline: "Builder · Product · AI",
-      intro: "你好，这是一版“流程验证用”的极简主页。确认流程跑通后，我可以继续升级为完整作品集风格。",
-      email: "you@example.com",
-      linkedin: "https://www.linkedin.com/in/yan-li-36780211a/",
-      github: "https://github.com/stoudemireyan32",
-      skills: ["AI / AIGC", "Product Strategy", "Growth", "Cross-functional Execution"]
-    };
-
-    const byId = (id) => document.getElementById(id);
-
-    byId("name").textContent = profile.name;
-    byId("headline").textContent = profile.headline;
-    byId("intro").textContent = profile.intro;
-
-    byId("email").href = `mailto:${profile.email}`;
-    byId("linkedin").href = profile.linkedin;
-    byId("github").href = profile.github;
-
-    byId("skills").innerHTML = profile.skills.map((item) => `<li>${item}</li>`).join("");
-  </script>
 </body>
 </html>
