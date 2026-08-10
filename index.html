@@ -10,8 +10,8 @@
       --bg: #130f12;
       --card: #1c171b;
       --line: #5a3f3f;
-      --text: #f7efe6;
-      --muted: #cfb7a3;
+      --text: #ece7e1;
+      --muted: #c8beb4;
       --accent: #f4a259;
     }
     * { box-sizing: border-box; }
@@ -120,25 +120,25 @@
     .hero-float h1,
     .hero-float .headline,
     .hero-float .meta {
-      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.82), 0 1px 2px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.82), 0 1px 2px rgba(0, 0, 0, 0.9);
     }
     .hero-float h1 {
-      font-size: clamp(32px, 5vw, 54px);
+      font-size: clamp(30px, 4.2vw, 48px);
       font-weight: 800;
       letter-spacing: 0.4px;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       color: #fff8ef;
     }
     .hero-float .headline {
-      font-size: clamp(20px, 2.5vw, 36px);
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #fff0df;
+      font-size: clamp(17px, 1.9vw, 26px);
+      font-weight: 650;
+      margin-bottom: 6px;
+      color: #f7e2cd;
     }
     .hero-float .meta {
-      font-size: clamp(14px, 1.2vw, 19px);
-      font-weight: 600;
-      color: #f8dec2;
+      font-size: clamp(14px, 1.05vw, 17px);
+      font-weight: 560;
+      color: #f1d6bc;
     }
     .actions {
       margin-top: 14px;
@@ -147,20 +147,21 @@
       gap: 10px;
     }
     .hero-actions {
-      margin-top: 0;
+      margin-top: 12px;
     }
     .btn {
-      border: 1px solid #7b4c41;
-      background: #2a1d20;
-      color: #faefe2;
+      border: 1px solid rgba(255, 199, 144, 0.55);
+      background: rgba(27, 18, 20, 0.56);
+      color: #fff2e2;
       border-radius: 10px;
       padding: 8px 12px;
       text-decoration: none;
       font-size: 14px;
+      backdrop-filter: blur(2px);
     }
     .btn.primary {
-      border-color: #f4a259;
-      background: #4b2a23;
+      border-color: rgba(255, 185, 108, 0.95);
+      background: rgba(79, 40, 26, 0.7);
     }
     p { margin: 0; }
     .about-content {
@@ -196,7 +197,7 @@
       border-color: #f4a259;
       color: #ffffff;
     }
-    .about-text { color: #f1dfd0; font-size: 15px; }
+    .about-text { color: #e9e4de; font-size: 15px; }
     .timeline {
       display: grid;
       gap: 14px;
@@ -216,7 +217,7 @@
     }
     .timeline-item .desc {
       margin-top: 8px;
-      color: #efdece;
+      color: #e6e1db;
       font-size: 14px;
     }
     .note {
@@ -233,8 +234,8 @@
         padding: 12px;
       }
       .hero-float { width: 100%; }
-      .hero-float h1 { font-size: 36px; }
-      .hero-float .headline { font-size: 24px; }
+      .hero-float h1 { font-size: 34px; }
+      .hero-float .headline { font-size: 20px; }
     }
   </style>
 </head>
@@ -257,15 +258,12 @@
               <div class="meta" id="meta"></div>
             </div>
           </div>
+          <div class="actions hero-actions">
+            <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="mailto:you@example.com">Email</a>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div class="actions hero-actions">
-        <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn" href="mailto:you@example.com">Email</a>
       </div>
     </section>
 
