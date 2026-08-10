@@ -102,6 +102,30 @@
       display: grid;
       gap: 12px;
     }
+    .expandable-block {
+      display: grid;
+      gap: 6px;
+    }
+    .clamp-text.is-collapsed {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .more-btn {
+      width: fit-content;
+      border: 1px solid #3a518e;
+      background: #132043;
+      color: #dce8ff;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .more-btn:hover {
+      border-color: #4fb9ea;
+      color: #ffffff;
+    }
     .about-text { color: #d9e4ff; font-size: 15px; }
     .timeline {
       display: grid;
@@ -182,6 +206,8 @@
         aboutTitle: "About",
         experienceTitle: "Experience",
         note: "Language switch enabled: English / 中文",
+        readMore: "Read more",
+        showLess: "Show less",
         about: [
           "As an AI researcher and technical leader, I specialize in computer vision and generative AI. My career began with a BSc in Computer Science from Nankai University (2010), followed by a Ph.D. from the Institute of Computing Technology, Chinese Academy of Sciences (2017), where my research focused on computer vision, deep learning, and facial recognition. My doctoral work was recognized with the Director's Special Award — the institute's highest honor for outstanding academic contributions.",
           "After my Ph.D., I joined Tencent WeChat as a Researcher, leading multimodal content understanding for core features including Moments and Favorites. In 2019, as a founding member of WeChat Channels (Video Accounts), I designed its full-scene content intelligence framework, covering short-video analysis, live-streaming comprehension, and user behavior modeling.",
@@ -212,6 +238,8 @@
         aboutTitle: "个人简介",
         experienceTitle: "工作经历",
         note: "已支持中英文切换：English / 中文",
+        readMore: "查看更多",
+        showLess: "收起",
         about: [
           "作为一名 AI 研究者和技术负责人，我长期专注于计算机视觉与生成式 AI。我的职业起点是南开大学计算机科学学士（2010），随后在中国科学院计算技术研究所获得博士学位（2017），研究方向包括计算机视觉、深度学习与人脸识别。博士期间曾获所内最高学术荣誉“所长特别奖”。",
           "博士毕业后，我加入腾讯微信担任研究员，负责朋友圈与收藏等核心场景的多模态内容理解。2019 年，作为视频号创始核心成员之一，我主导设计了全场景内容智能框架，覆盖短视频分析、直播理解与用户行为建模。",
@@ -238,19 +266,53 @@
 
     const byId = (id) => document.getElementById(id);
 
-    function renderExperience(items) {
+    function renderExperience(items, labels) {
       byId("experienceList").innerHTML = items.map((item) => `
         <article class="timeline-item">
           <div class="role">${item.role}</div>
           <div class="time">${item.time}</div>
           <div class="location">${item.location}</div>
-          <p class="desc">${item.desc}</p>
+          <div class="expandable-block">
+            <p class="desc clamp-text is-collapsed">${item.desc}</p>
+            <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}" hidden>${labels.readMore}</button>
+          </div>
         </article>
       `).join("");
     }
 
-    function renderAbout(paragraphs) {
-      byId("aboutContent").innerHTML = paragraphs.map((text) => `<p class="about-text">${text}</p>`).join("");
+    function renderAbout(paragraphs, labels) {
+      byId("aboutContent").innerHTML = paragraphs.map((text) => `
+        <div class="expandable-block">
+          <p class="about-text clamp-text is-collapsed">${text}</p>
+          <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}" hidden>${labels.readMore}</button>
+        </div>
+      `).join("");
+    }
+
+    function initExpandables() {
+      const blocks = document.querySelectorAll(".expandable-block");
+      blocks.forEach((block) => {
+        const text = block.querySelector(".clamp-text");
+        const button = block.querySelector(".more-btn");
+        if (!text || !button) {
+          return;
+        }
+
+        text.classList.add("is-collapsed");
+        button.textContent = button.dataset.more;
+        button.hidden = true;
+
+        const isOverflowing = text.scrollHeight > text.clientHeight + 1;
+        if (!isOverflowing) {
+          return;
+        }
+
+        button.hidden = false;
+        button.onclick = () => {
+          const isCollapsed = text.classList.toggle("is-collapsed");
+          button.textContent = isCollapsed ? button.dataset.more : button.dataset.less;
+        };
+      });
     }
 
     function setLanguage(lang) {
@@ -265,8 +327,9 @@
       byId("experienceTitle").textContent = copy.experienceTitle;
       byId("note").textContent = copy.note;
 
-      renderAbout(copy.about);
-      renderExperience(copy.experience);
+      renderAbout(copy.about, copy);
+      renderExperience(copy.experience, copy);
+      initExpandables();
 
       byId("langEn").classList.toggle("active", lang === "en");
       byId("langZh").classList.toggle("active", lang === "zh");
