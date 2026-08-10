@@ -36,6 +36,31 @@
       padding: 22px;
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
     }
+    .hero-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      border: 1px solid #3a518e;
+      background: #132043;
+      color: #e8efff;
+      border-radius: 10px;
+      padding: 6px 10px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .lang-btn.active {
+      border-color: #4fb9ea;
+      background: #123256;
+      box-shadow: inset 0 0 0 1px rgba(76, 201, 240, 0.35);
+    }
     h1, h2 { margin: 0 0 10px; }
     h1 { font-size: 30px; }
     h2 {
@@ -73,6 +98,10 @@
       background: #123256;
     }
     p { margin: 0; }
+    .about-content {
+      display: grid;
+      gap: 12px;
+    }
     .about-text { color: #d9e4ff; font-size: 15px; }
     .timeline {
       display: grid;
@@ -104,15 +133,25 @@
     @media (max-width: 860px) {
       .container { padding-top: 18px; }
       h1 { font-size: 24px; }
+      .hero-top { flex-direction: column; }
+      .lang-switch { align-self: flex-end; }
     }
   </style>
 </head>
 <body>
   <main class="container">
     <section class="card">
-      <h1>Yan Li</h1>
-      <div class="headline">Head of Multimodal AI and AIGC, JD.COM</div>
-      <div class="meta">Beijing, China · On-site</div>
+      <div class="hero-top">
+        <div>
+          <h1 id="name">Yan Li</h1>
+          <div class="headline" id="headline"></div>
+          <div class="meta" id="meta"></div>
+        </div>
+        <div class="lang-switch" aria-label="Language Switch">
+          <button class="lang-btn" id="langEn" type="button">English</button>
+          <button class="lang-btn" id="langZh" type="button">中文</button>
+        </div>
+      </div>
       <div class="actions">
         <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
         <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
@@ -121,52 +160,127 @@
     </section>
 
     <section class="card">
-      <h2>About</h2>
-      <p class="about-text">
-        As an AI researcher and technical leader, I specialize in computer vision and generative AI. My career began with a BSc in Computer Science from Nankai University (2010), followed by a Ph.D. from the Institute of Computing Technology, Chinese Academy of Sciences (2017), where my research focused on computer vision, deep learning, and facial recognition. My doctoral work was recognized with the Director's Special Award — the institute's highest honor for outstanding academic contributions.
-      </p>
-      <br />
-      <p class="about-text">
-        After my Ph.D., I joined Tencent WeChat as a Researcher, leading multimodal content understanding for core features including Moments and Favorites. In 2019, as a founding member of WeChat Channels (Video Accounts), I designed its full-scene content intelligence framework, covering short-video analysis, live-streaming comprehension, and user behavior modeling.
-      </p>
-      <br />
-      <p class="about-text">
-        In 2021, I moved to Kuaishou to lead content understanding for its global expansion, serving regions such as Southeast Asia, Latin America, and the Middle East. Since 2023, I have been leading the image generation project for Kuaishou's Kling (可灵) AI, driving end-to-end development of its text-to-image foundation model from research to product integration.
-      </p>
-      <br />
-      <p class="about-text">
-        In 2025, I joined JD.com as the Head of Multimodal AI and AIGC. I lead initiatives across product, operations, algorithm, and engineering to redefine e-commerce experiences. This includes developing multimodal understanding and controllable generation models, launching the JD AIGC platform for merchants, and advancing virtual try-on with personalized outfit recommendations. We are now pioneering the next paradigm of dynamic, AI-generated product content tailored to individual user preferences.
-      </p>
-      <br />
-      <p class="about-text">
-        My experience includes building and mentoring technical teams to deliver scalable AI solutions. I am committed to advancing AGI with ethical deployment, and welcome collaborations to shape the future of intelligent systems.
-      </p>
+      <h2 id="aboutTitle"></h2>
+      <div class="about-content" id="aboutContent"></div>
     </section>
 
     <section class="card">
-      <h2>Experience</h2>
-      <div class="timeline">
-        <article class="timeline-item">
-          <div class="role">Head of Multimodal AI and AIGC · JD.com</div>
-          <div class="time">March 2025 - Present</div>
-          <div class="location">Beijing, China · On-site</div>
-          <p class="desc">
-            I currently lead the Multimodal AI and AIGC initiatives at JD.com, overseeing product strategy, operations, design, algorithm development, and engineering R&D. On the algorithm side, my team focuses on advancing e-commerce multimodal understanding models, controllable visual generation models, and unified models tailored for online retail scenarios. Through our product efforts, we launched JD Oxygen Vision, an AIGC-powered platform designed to help merchants create, test, and optimize product visuals and advertising materials. The platform now serves a wide range of sellers on JD.com. We've also introduced a virtual try-on capability that enables customers to visualize clothing fit and receive personalized outfit recommendations. Looking forward, we're working toward the next-generation content paradigm in e-commerce: fully personalized, AI-generated visual materials for each user. By delivering unique product visuals tailored to individual preferences, we aim to enhance the shopping experience while driving better conversion and business growth for our merchants.
-          </p>
-        </article>
-
-        <article class="timeline-item">
-          <div class="role">Senior Staff Algorithm Engineer / Director · Kling AI (Kuaishou)</div>
-          <div class="time">December 2022 - March 2025</div>
-          <div class="location">Beijing, China · On-site</div>
-          <p class="desc">
-            As Tech Lead at Kuaishou's Kling AI Team, I led the development of data infrastructure for collecting, cleaning, and managing multi-billion-scale high-quality image/video datasets. My team engineered the foundational text-to-image generative model (Kolors), innovating core components including multilingual text encoders, variational autoencoders (VAE), and diffusion model architectures. Leveraging this proprietary technology, we developed ID-preserving controllable image generation and e-commerce AIGC solutions—such as virtual try-on capabilities. To date, our Kolors model has generated over 340 million premium images for diverse applications, serving millions of users while ensuring consistent brand identity in generated assets.
-          </p>
-        </article>
-      </div>
+      <h2 id="experienceTitle"></h2>
+      <div class="timeline" id="experienceList"></div>
     </section>
 
-    <p class="note">Updated in English as requested.</p>
+    <p class="note" id="note"></p>
   </main>
+
+  <script>
+    const profile = {
+      en: {
+        title: "Yan Li | Head of Multimodal AI and AIGC, JD.COM",
+        description: "Yan Li - AI researcher and technical leader specializing in computer vision and generative AI.",
+        headline: "Head of Multimodal AI and AIGC, JD.COM",
+        meta: "Beijing, China · On-site",
+        aboutTitle: "About",
+        experienceTitle: "Experience",
+        note: "Language switch enabled: English / 中文",
+        about: [
+          "As an AI researcher and technical leader, I specialize in computer vision and generative AI. My career began with a BSc in Computer Science from Nankai University (2010), followed by a Ph.D. from the Institute of Computing Technology, Chinese Academy of Sciences (2017), where my research focused on computer vision, deep learning, and facial recognition. My doctoral work was recognized with the Director's Special Award — the institute's highest honor for outstanding academic contributions.",
+          "After my Ph.D., I joined Tencent WeChat as a Researcher, leading multimodal content understanding for core features including Moments and Favorites. In 2019, as a founding member of WeChat Channels (Video Accounts), I designed its full-scene content intelligence framework, covering short-video analysis, live-streaming comprehension, and user behavior modeling.",
+          "In 2021, I moved to Kuaishou to lead content understanding for its global expansion, serving regions such as Southeast Asia, Latin America, and the Middle East. Since 2023, I have been leading the image generation project for Kuaishou's Kling (KLING) AI, driving end-to-end development of its text-to-image foundation model from research to product integration.",
+          "In 2025, I joined JD.com as the Head of Multimodal AI and AIGC. I lead initiatives across product, operations, algorithm, and engineering to redefine e-commerce experiences. This includes developing multimodal understanding and controllable generation models, launching the JD AIGC platform for merchants, and advancing virtual try-on with personalized outfit recommendations. We are now pioneering the next paradigm of dynamic, AI-generated product content tailored to individual user preferences.",
+          "My experience includes building and mentoring technical teams to deliver scalable AI solutions. I am committed to advancing AGI with ethical deployment, and welcome collaborations to shape the future of intelligent systems."
+        ],
+        experience: [
+          {
+            role: "Head of Multimodal AI and AIGC · JD.com",
+            time: "March 2025 - Present",
+            location: "Beijing, China · On-site",
+            desc: "I currently lead the Multimodal AI and AIGC initiatives at JD.com, overseeing product strategy, operations, design, algorithm development, and engineering R&D. On the algorithm side, my team focuses on advancing e-commerce multimodal understanding models, controllable visual generation models, and unified models tailored for online retail scenarios. Through our product efforts, we launched JD Oxygen Vision, an AIGC-powered platform designed to help merchants create, test, and optimize product visuals and advertising materials. The platform now serves a wide range of sellers on JD.com. We've also introduced a virtual try-on capability that enables customers to visualize clothing fit and receive personalized outfit recommendations. Looking forward, we're working toward the next-generation content paradigm in e-commerce: fully personalized, AI-generated visual materials for each user. By delivering unique product visuals tailored to individual preferences, we aim to enhance the shopping experience while driving better conversion and business growth for our merchants."
+          },
+          {
+            role: "Senior Staff Algorithm Engineer / Director · Kling AI (Kuaishou)",
+            time: "December 2022 - March 2025",
+            location: "Beijing, China · On-site",
+            desc: "As Tech Lead at Kuaishou's Kling AI Team, I led the development of data infrastructure for collecting, cleaning, and managing multi-billion-scale high-quality image/video datasets. My team engineered the foundational text-to-image generative model (Kolors), innovating core components including multilingual text encoders, variational autoencoders (VAE), and diffusion model architectures. Leveraging this proprietary technology, we developed ID-preserving controllable image generation and e-commerce AIGC solutions-such as virtual try-on capabilities. To date, our Kolors model has generated over 340 million premium images for diverse applications, serving millions of users while ensuring consistent brand identity in generated assets."
+          }
+        ]
+      },
+      zh: {
+        title: "Yan Li | 京东多模态 AI 与 AIGC 负责人",
+        description: "Yan Li - 专注于计算机视觉与生成式 AI 的技术负责人。",
+        headline: "Head of Multimodal AI and AIGC, JD.COM",
+        meta: "中国 北京 · 现场办公",
+        aboutTitle: "个人简介",
+        experienceTitle: "工作经历",
+        note: "已支持中英文切换：English / 中文",
+        about: [
+          "作为一名 AI 研究者和技术负责人，我长期专注于计算机视觉与生成式 AI。我的职业起点是南开大学计算机科学学士（2010），随后在中国科学院计算技术研究所获得博士学位（2017），研究方向包括计算机视觉、深度学习与人脸识别。博士期间曾获所内最高学术荣誉“所长特别奖”。",
+          "博士毕业后，我加入腾讯微信担任研究员，负责朋友圈与收藏等核心场景的多模态内容理解。2019 年，作为视频号创始核心成员之一，我主导设计了全场景内容智能框架，覆盖短视频分析、直播理解与用户行为建模。",
+          "2021 年我加入快手，负责全球化内容理解能力建设，服务东南亚、拉美与中东等区域。自 2023 年起，我负责快手可灵（Kling）AI 的图像生成项目，推动文生图基础模型从研究到产品落地的全链路建设。",
+          "2025 年我加入京东，担任多模态 AI 与 AIGC 负责人。我带领产品、运营、算法与工程团队重塑电商体验，重点推进电商多模态理解、可控生成模型、面向商家的京东 AIGC 平台，以及个性化虚拟试衣推荐能力。当前我们正探索下一代电商内容范式：为每位用户动态生成个性化商品视觉内容。",
+          "我有丰富的技术团队建设与人才培养经验，持续推动可规模化的 AI 能力落地。未来我希望在保证安全与伦理的前提下，继续推动 AGI 发展，也欢迎更多合作共同塑造智能系统的未来。"
+        ],
+        experience: [
+          {
+            role: "京东 · Head of Multimodal AI and AIGC",
+            time: "2025 年 3 月 - 至今",
+            location: "中国 北京 · 现场办公",
+            desc: "目前我负责京东多模态 AI 与 AIGC 相关业务，统筹产品策略、运营、设计、算法与工程研发。在算法方向，团队聚焦电商多模态理解模型、可控视觉生成模型以及面向零售场景的统一模型建设。在产品方向，我们上线了面向商家的 AIGC 平台 JD Oxygen Vision，帮助商家高效生成、测试和优化商品图与广告素材，已服务大量京东商家。我们还推出了虚拟试衣能力，使消费者能够直观查看上身效果并获得个性化穿搭推荐。面向未来，我们正在推进电商内容的下一代范式：为每位用户生成专属的 AI 视觉内容，从而提升购物体验并驱动商家转化增长。"
+          },
+          {
+            role: "可灵 AI（快手）· Senior Staff Algorithm Engineer / Director",
+            time: "2022 年 12 月 - 2025 年 3 月",
+            location: "中国 北京 · 现场办公",
+            desc: "在快手可灵 AI 团队担任技术负责人期间，我主导建设了用于多十亿规模高质量图像/视频数据采集、清洗与管理的数据基础设施。团队研发了文生图基础模型 Kolors，并在多语言文本编码器、VAE 与扩散模型架构等核心环节实现创新。基于该技术体系，我们进一步落地了身份保持可控生成与电商 AIGC 解决方案（如虚拟试衣）。截至目前，Kolors 已累计生成超过 3.4 亿张高质量图像，服务数百万用户，并有效保障品牌视觉一致性。"
+          }
+        ]
+      }
+    };
+
+    const byId = (id) => document.getElementById(id);
+
+    function renderExperience(items) {
+      byId("experienceList").innerHTML = items.map((item) => `
+        <article class="timeline-item">
+          <div class="role">${item.role}</div>
+          <div class="time">${item.time}</div>
+          <div class="location">${item.location}</div>
+          <p class="desc">${item.desc}</p>
+        </article>
+      `).join("");
+    }
+
+    function renderAbout(paragraphs) {
+      byId("aboutContent").innerHTML = paragraphs.map((text) => `<p class="about-text">${text}</p>`).join("");
+    }
+
+    function setLanguage(lang) {
+      const copy = profile[lang] || profile.en;
+      document.documentElement.lang = lang;
+      document.title = copy.title;
+      document.querySelector('meta[name="description"]').setAttribute("content", copy.description);
+
+      byId("headline").textContent = copy.headline;
+      byId("meta").textContent = copy.meta;
+      byId("aboutTitle").textContent = copy.aboutTitle;
+      byId("experienceTitle").textContent = copy.experienceTitle;
+      byId("note").textContent = copy.note;
+
+      renderAbout(copy.about);
+      renderExperience(copy.experience);
+
+      byId("langEn").classList.toggle("active", lang === "en");
+      byId("langZh").classList.toggle("active", lang === "zh");
+
+      localStorage.setItem("site_lang", lang);
+    }
+
+    byId("langEn").addEventListener("click", () => setLanguage("en"));
+    byId("langZh").addEventListener("click", () => setLanguage("zh"));
+
+    const savedLanguage = localStorage.getItem("site_lang");
+    const browserPrefersZh = navigator.language && navigator.language.toLowerCase().startsWith("zh");
+    const defaultLanguage = savedLanguage || (browserPrefersZh ? "zh" : "en");
+    setLanguage(defaultLanguage);
+  </script>
 </body>
 </html>
