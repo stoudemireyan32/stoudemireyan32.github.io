@@ -7,19 +7,19 @@
   <meta name="description" content="Yan Li - AI researcher and technical leader specializing in computer vision and generative AI." />
   <style>
     :root {
-      --bg: #0b1220;
-      --card: #0f1a2f;
-      --line: #263857;
-      --text: #e7eefc;
-      --muted: #9fb2d4;
-      --accent: #4cc9f0;
+      --bg: #130f12;
+      --card: #1c171b;
+      --line: #5a3f3f;
+      --text: #f7efe6;
+      --muted: #cfb7a3;
+      --accent: #f4a259;
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       color: var(--text);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: radial-gradient(circle at 10% 0%, #1b2f5a 0%, var(--bg) 45%), var(--bg);
+      background: radial-gradient(circle at 20% 0%, #5b2d26 0%, var(--bg) 52%), var(--bg);
       line-height: 1.7;
     }
     .container {
@@ -30,7 +30,7 @@
       gap: 16px;
     }
     .card {
-      background: linear-gradient(155deg, #0f1a2f, #142445);
+      background: linear-gradient(155deg, #1b1519, #231a1f);
       border: 1px solid var(--line);
       border-radius: 16px;
       padding: 22px;
@@ -48,18 +48,18 @@
       flex-shrink: 0;
     }
     .lang-btn {
-      border: 1px solid #3a518e;
-      background: #132043;
-      color: #e8efff;
+      border: 1px solid #7b4c41;
+      background: #2a1d20;
+      color: #faefe2;
       border-radius: 10px;
       padding: 6px 10px;
       font-size: 13px;
       cursor: pointer;
     }
     .lang-btn.active {
-      border-color: #4fb9ea;
-      background: #123256;
-      box-shadow: inset 0 0 0 1px rgba(76, 201, 240, 0.35);
+      border-color: #f4a259;
+      background: #4b2a23;
+      box-shadow: inset 0 0 0 1px rgba(244, 162, 89, 0.35);
     }
     h1, h2 { margin: 0 0 10px; }
     h1 { font-size: 30px; }
@@ -70,7 +70,7 @@
     }
     .headline {
       margin: 4px 0 10px;
-      color: #d8e4ff;
+      color: #fbe6d0;
       font-size: 17px;
       font-weight: 600;
     }
@@ -85,17 +85,17 @@
       gap: 10px;
     }
     .btn {
-      border: 1px solid #3a518e;
-      background: #132043;
-      color: #e8efff;
+      border: 1px solid #7b4c41;
+      background: #2a1d20;
+      color: #faefe2;
       border-radius: 10px;
       padding: 8px 12px;
       text-decoration: none;
       font-size: 14px;
     }
     .btn.primary {
-      border-color: #4fb9ea;
-      background: #123256;
+      border-color: #f4a259;
+      background: #4b2a23;
     }
     p { margin: 0; }
     .about-content {
@@ -115,25 +115,25 @@
     }
     .more-btn {
       width: fit-content;
-      border: 1px solid #3a518e;
-      background: #132043;
-      color: #dce8ff;
+      border: 1px solid #7b4c41;
+      background: #2a1d20;
+      color: #faefe2;
       border-radius: 8px;
       padding: 4px 10px;
       font-size: 12px;
       cursor: pointer;
     }
     .more-btn:hover {
-      border-color: #4fb9ea;
+      border-color: #f4a259;
       color: #ffffff;
     }
-    .about-text { color: #d9e4ff; font-size: 15px; }
+    .about-text { color: #f1dfd0; font-size: 15px; }
     .timeline {
       display: grid;
       gap: 14px;
     }
     .timeline-item {
-      border-left: 2px solid #3f5c98;
+      border-left: 2px solid #7b4c41;
       padding-left: 12px;
     }
     .timeline-item .role {
@@ -147,7 +147,7 @@
     }
     .timeline-item .desc {
       margin-top: 8px;
-      color: #d2ddfa;
+      color: #efdece;
       font-size: 14px;
     }
     .note {
@@ -165,6 +165,10 @@
 </head>
 <body>
   <main class="container">
+    <section class="card banner">
+      <img src="assets/homepage-banner.jpeg" alt="Cinematic banner" />
+    </section>
+
     <section class="card">
       <div class="hero-top">
         <div>
@@ -340,3 +344,24 @@
   </script>
 </body>
 </html>
+    .banner {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      min-height: 260px;
+      background: #000;
+    }
+    .banner img {
+      width: 100%;
+      height: clamp(220px, 35vw, 360px);
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 7, 9, 0.05) 0%, rgba(10, 7, 9, 0.6) 85%);
+      pointer-events: none;
+    }
