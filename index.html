@@ -36,6 +36,49 @@
       padding: 22px;
       box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
     }
+    .banner {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      min-height: 260px;
+      background: #000;
+    }
+    .banner img {
+      width: 100%;
+      height: clamp(240px, 36vw, 390px);
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 7, 9, 0.12) 0%, rgba(10, 7, 9, 0.72) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .banner-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 16px;
+    }
+    .overlay-top {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .hero-float {
+      width: min(760px, calc(100% - 8px));
+      background: rgba(22, 15, 17, 0.74);
+      border: 1px solid rgba(255, 191, 132, 0.35);
+      border-radius: 14px;
+      padding: 14px;
+      backdrop-filter: blur(4px);
+    }
     .hero-top {
       display: flex;
       align-items: start;
@@ -102,6 +145,10 @@
       display: grid;
       gap: 12px;
     }
+    .about-body {
+      display: grid;
+      gap: 12px;
+    }
     .expandable-block {
       display: grid;
       gap: 6px;
@@ -160,6 +207,12 @@
       h1 { font-size: 24px; }
       .hero-top { flex-direction: column; }
       .lang-switch { align-self: flex-end; }
+      .banner-overlay {
+        padding: 12px;
+      }
+      .hero-float {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -167,24 +220,27 @@
   <main class="container">
     <section class="card banner">
       <img src="assets/homepage-banner.jpeg" alt="Cinematic banner" />
-    </section>
-
-    <section class="card">
-      <div class="hero-top">
-        <div>
-          <h1 id="name">Yan Li</h1>
-          <div class="headline" id="headline"></div>
-          <div class="meta" id="meta"></div>
+      <div class="banner-overlay">
+        <div class="overlay-top">
+          <div class="lang-switch" aria-label="Language Switch">
+            <button class="lang-btn" id="langEn" type="button">English</button>
+            <button class="lang-btn" id="langZh" type="button">中文</button>
+          </div>
         </div>
-        <div class="lang-switch" aria-label="Language Switch">
-          <button class="lang-btn" id="langEn" type="button">English</button>
-          <button class="lang-btn" id="langZh" type="button">中文</button>
+        <div class="hero-float">
+          <div class="hero-top">
+            <div>
+              <h1 id="name">Yan Li</h1>
+              <div class="headline" id="headline"></div>
+              <div class="meta" id="meta"></div>
+            </div>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="mailto:you@example.com">Email</a>
+          </div>
         </div>
-      </div>
-      <div class="actions">
-        <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="btn" href="mailto:you@example.com">Email</a>
       </div>
     </section>
 
@@ -286,12 +342,13 @@
     }
 
     function renderAbout(paragraphs, labels) {
-      byId("aboutContent").innerHTML = paragraphs.map((text) => `
+      const body = paragraphs.map((text) => `<p class="about-text">${text}</p>`).join("");
+      byId("aboutContent").innerHTML = `
         <div class="expandable-block">
-          <p class="about-text clamp-text is-collapsed">${text}</p>
+          <div class="about-body clamp-text is-collapsed">${body}</div>
           <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}">${labels.readMore}</button>
         </div>
-      `).join("");
+      `;
     }
 
     function initExpandables() {
@@ -344,24 +401,3 @@
   </script>
 </body>
 </html>
-    .banner {
-      position: relative;
-      overflow: hidden;
-      padding: 0;
-      min-height: 260px;
-      background: #000;
-    }
-    .banner img {
-      width: 100%;
-      height: clamp(220px, 35vw, 360px);
-      object-fit: cover;
-      display: block;
-      filter: saturate(1.05) contrast(1.05);
-    }
-    .banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 7, 9, 0.05) 0%, rgba(10, 7, 9, 0.6) 85%);
-      pointer-events: none;
-    }
