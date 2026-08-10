@@ -275,7 +275,7 @@
           <div class="location">${item.location}</div>
           <div class="expandable-block">
             <p class="desc clamp-text is-collapsed">${item.desc}</p>
-            <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}" hidden>${labels.readMore}</button>
+            <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}">${labels.readMore}</button>
           </div>
         </article>
       `).join("");
@@ -285,7 +285,7 @@
       byId("aboutContent").innerHTML = paragraphs.map((text) => `
         <div class="expandable-block">
           <p class="about-text clamp-text is-collapsed">${text}</p>
-          <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}" hidden>${labels.readMore}</button>
+          <button class="more-btn" type="button" data-more="${labels.readMore}" data-less="${labels.showLess}">${labels.readMore}</button>
         </div>
       `).join("");
     }
@@ -301,14 +301,6 @@
 
         text.classList.add("is-collapsed");
         button.textContent = button.dataset.more;
-        button.hidden = true;
-
-        const isOverflowing = text.scrollHeight > text.clientHeight + 1;
-        if (!isOverflowing) {
-          return;
-        }
-
-        button.hidden = false;
         button.onclick = () => {
           const isCollapsed = text.classList.toggle("is-collapsed");
           button.textContent = isCollapsed ? button.dataset.more : button.dataset.less;
