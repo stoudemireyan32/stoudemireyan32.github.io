@@ -202,6 +202,28 @@
       display: grid;
       gap: 14px;
     }
+    .publications {
+      display: grid;
+      gap: 12px;
+    }
+    .pub-item {
+      border-left: 2px solid #7b4c41;
+      padding-left: 12px;
+    }
+    .pub-title {
+      font-weight: 700;
+      color: #ece6df;
+      margin-bottom: 4px;
+    }
+    .pub-authors {
+      color: #ccc3b8;
+      font-size: 14px;
+    }
+    .pub-meta {
+      color: #beb3a6;
+      font-size: 13px;
+      margin-top: 2px;
+    }
     .timeline-item {
       border-left: 2px solid #7b4c41;
       padding-left: 12px;
@@ -277,6 +299,11 @@
       <div class="timeline" id="experienceList"></div>
     </section>
 
+    <section class="card">
+      <h2 id="publicationsTitle"></h2>
+      <div class="publications" id="publicationsList"></div>
+    </section>
+
     <p class="note" id="note"></p>
   </main>
 
@@ -289,6 +316,7 @@
         meta: "Beijing, China · On-site",
         aboutTitle: "About",
         experienceTitle: "Experience",
+        publicationsTitle: "Selected Publications",
         note: "Language switch enabled: English / 中文",
         readMore: "Read more",
         showLess: "Show less",
@@ -312,6 +340,68 @@
             location: "Beijing, China · On-site",
             desc: "As Tech Lead at Kuaishou's Kling AI Team, I led the development of data infrastructure for collecting, cleaning, and managing multi-billion-scale high-quality image/video datasets. My team engineered the foundational text-to-image generative model (Kolors), innovating core components including multilingual text encoders, variational autoencoders (VAE), and diffusion model architectures. Leveraging this proprietary technology, we developed ID-preserving controllable image generation and e-commerce AIGC solutions-such as virtual try-on capabilities. To date, our Kolors model has generated over 340 million premium images for diverse applications, serving millions of users while ensuring consistent brand identity in generated assets."
           }
+        ],
+        publications: [
+          {
+            title: "OxyEcomBench: Benchmarking Multimodal Foundation Models across E-Commerce Ecosystems",
+            authors: "Yong Liu, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.13173",
+            year: 2026
+          },
+          {
+            title: "Meta-TTRL: A Metacognitive Framework for Self-Improving Test-Time Reinforcement Learning in Unified Multimodal Models",
+            authors: "Lit Sin Tan, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2603.15724",
+            year: 2026
+          },
+          {
+            title: "LiWi: Layering in the Wild",
+            authors: "Yu He, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.14552",
+            year: 2026
+          },
+          {
+            title: "Hyperdit: Hyper-connected transformers for high-fidelity pixel-space diffusion",
+            authors: "Yu He, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.15741",
+            year: 2026
+          },
+          {
+            title: "FrequencyBooster: Full-Frequency Modeling for High-Fidelity Pixel Diffusion",
+            authors: "Lichen Ma, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.17759",
+            year: 2026
+          },
+          {
+            title: "Fashion130K: An E-commerce Fashion Dataset for Outfit Generation with Unified Multi-modal Condition",
+            authors: "Yu He, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.10127",
+            year: 2026
+          },
+          {
+            title: "Diffusion model as a noise-aware latent reward model for step-level preference optimization",
+            authors: "Tao Zhang, Yan Li et al.",
+            venue: "Advances in Neural Information Processing Systems",
+            year: 2026
+          },
+          {
+            title: "Muse: Multi-subject unified synthesis via explicit layout semantic expansion",
+            authors: "Fei Peng, Yan Li et al.",
+            venue: "2025 IEEE/CVF International Conference on Computer Vision (ICCV)",
+            year: 2025
+          },
+          {
+            title: "Learning multi-dimensional human preference for text-to-image generation",
+            authors: "Sixian Zhang, Yan Li et al.",
+            venue: "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+            year: 2024
+          },
+          {
+            title: "Method for making music recommendations and related computing device, and medium thereof",
+            authors: "Yan Li et al.",
+            venue: "US Patent 11,314,806",
+            year: 2022
+          }
         ]
       },
       zh: {
@@ -321,6 +411,7 @@
         meta: "中国 北京 · 现场办公",
         aboutTitle: "个人简介",
         experienceTitle: "工作经历",
+        publicationsTitle: "精选论文",
         note: "已支持中英文切换：English / 中文",
         readMore: "查看更多",
         showLess: "收起",
@@ -343,6 +434,68 @@
             time: "2022 年 12 月 - 2025 年 3 月",
             location: "中国 北京 · 现场办公",
             desc: "在快手可灵 AI 团队担任技术负责人期间，我主导建设了用于多十亿规模高质量图像/视频数据采集、清洗与管理的数据基础设施。团队研发了文生图基础模型 Kolors，并在多语言文本编码器、VAE 与扩散模型架构等核心环节实现创新。基于该技术体系，我们进一步落地了身份保持可控生成与电商 AIGC 解决方案（如虚拟试衣）。截至目前，Kolors 已累计生成超过 3.4 亿张高质量图像，服务数百万用户，并有效保障品牌视觉一致性。"
+          }
+        ],
+        publications: [
+          {
+            title: "OxyEcomBench: Benchmarking Multimodal Foundation Models across E-Commerce Ecosystems",
+            authors: "Yong Liu, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.13173",
+            year: 2026
+          },
+          {
+            title: "Meta-TTRL: A Metacognitive Framework for Self-Improving Test-Time Reinforcement Learning in Unified Multimodal Models",
+            authors: "Lit Sin Tan, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2603.15724",
+            year: 2026
+          },
+          {
+            title: "LiWi: Layering in the Wild",
+            authors: "Yu He, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.14552",
+            year: 2026
+          },
+          {
+            title: "Hyperdit: Hyper-connected transformers for high-fidelity pixel-space diffusion",
+            authors: "Yu He, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.15741",
+            year: 2026
+          },
+          {
+            title: "FrequencyBooster: Full-Frequency Modeling for High-Fidelity Pixel Diffusion",
+            authors: "Lichen Ma, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.17759",
+            year: 2026
+          },
+          {
+            title: "Fashion130K: An E-commerce Fashion Dataset for Outfit Generation with Unified Multi-modal Condition",
+            authors: "Yu He, Yan Li et al.",
+            venue: "arXiv preprint arXiv:2605.10127",
+            year: 2026
+          },
+          {
+            title: "Diffusion model as a noise-aware latent reward model for step-level preference optimization",
+            authors: "Tao Zhang, Yan Li et al.",
+            venue: "Advances in Neural Information Processing Systems",
+            year: 2026
+          },
+          {
+            title: "Muse: Multi-subject unified synthesis via explicit layout semantic expansion",
+            authors: "Fei Peng, Yan Li et al.",
+            venue: "2025 IEEE/CVF International Conference on Computer Vision (ICCV)",
+            year: 2025
+          },
+          {
+            title: "Learning multi-dimensional human preference for text-to-image generation",
+            authors: "Sixian Zhang, Yan Li et al.",
+            venue: "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+            year: 2024
+          },
+          {
+            title: "Method for making music recommendations and related computing device, and medium thereof",
+            authors: "Yan Li et al.",
+            venue: "US Patent 11,314,806",
+            year: 2022
           }
         ]
       }
@@ -374,6 +527,16 @@
       `;
     }
 
+    function renderPublications(items) {
+      byId("publicationsList").innerHTML = items.map((item) => `
+        <article class="pub-item">
+          <div class="pub-title">${item.title}</div>
+          <div class="pub-authors">${item.authors}</div>
+          <div class="pub-meta">${item.venue} · ${item.year}</div>
+        </article>
+      `).join("");
+    }
+
     function initExpandables() {
       const blocks = document.querySelectorAll(".expandable-block");
       blocks.forEach((block) => {
@@ -402,10 +565,12 @@
       byId("meta").textContent = copy.meta;
       byId("aboutTitle").textContent = copy.aboutTitle;
       byId("experienceTitle").textContent = copy.experienceTitle;
+      byId("publicationsTitle").textContent = copy.publicationsTitle;
       byId("note").textContent = copy.note;
 
       renderAbout(copy.about, copy);
       renderExperience(copy.experience, copy);
+      renderPublications(copy.publications || []);
       initExpandables();
 
       byId("langEn").classList.toggle("active", lang === "en");
