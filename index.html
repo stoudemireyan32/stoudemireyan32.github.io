@@ -72,12 +72,8 @@
       justify-content: flex-end;
     }
     .hero-float {
-      width: min(760px, calc(100% - 8px));
-      background: rgba(22, 15, 17, 0.74);
-      border: 1px solid rgba(255, 191, 132, 0.35);
-      border-radius: 14px;
-      padding: 14px;
-      backdrop-filter: blur(4px);
+      width: min(860px, calc(100% - 8px));
+      padding: 6px 4px;
     }
     .hero-top {
       display: flex;
@@ -121,11 +117,37 @@
       color: var(--muted);
       font-size: 14px;
     }
+    .hero-float h1,
+    .hero-float .headline,
+    .hero-float .meta {
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.82), 0 1px 2px rgba(0, 0, 0, 0.9);
+    }
+    .hero-float h1 {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      margin-bottom: 8px;
+      color: #fff8ef;
+    }
+    .hero-float .headline {
+      font-size: clamp(20px, 2.5vw, 36px);
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff0df;
+    }
+    .hero-float .meta {
+      font-size: clamp(14px, 1.2vw, 19px);
+      font-weight: 600;
+      color: #f8dec2;
+    }
     .actions {
       margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+    }
+    .hero-actions {
+      margin-top: 0;
     }
     .btn {
       border: 1px solid #7b4c41;
@@ -210,9 +232,9 @@
       .banner-overlay {
         padding: 12px;
       }
-      .hero-float {
-        width: 100%;
-      }
+      .hero-float { width: 100%; }
+      .hero-float h1 { font-size: 36px; }
+      .hero-float .headline { font-size: 24px; }
     }
   </style>
 </head>
@@ -235,12 +257,15 @@
               <div class="meta" id="meta"></div>
             </div>
           </div>
-          <div class="actions">
-            <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="mailto:you@example.com">Email</a>
-          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="actions hero-actions">
+        <a class="btn primary" href="https://www.linkedin.com/in/yan-li-36780211a/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/stoudemireyan32" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="mailto:you@example.com">Email</a>
       </div>
     </section>
 
