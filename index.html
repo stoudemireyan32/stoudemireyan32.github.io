@@ -69,17 +69,26 @@
     }
     .overlay-top {
       display: flex;
-      justify-content: flex-end;
-    }
-    .hero-float {
-      width: min(860px, calc(100% - 8px));
-      padding: 6px 4px;
-    }
-    .hero-top {
-      display: flex;
-      align-items: start;
+      align-items: flex-start;
       justify-content: space-between;
       gap: 12px;
+    }
+    .avatar-wrap {
+      width: clamp(68px, 9vw, 108px);
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(145deg, rgba(255, 185, 108, 0.95), rgba(241, 112, 60, 0.9));
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.42);
+    }
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      filter: contrast(1.04) saturate(1.03);
     }
     .lang-switch {
       display: flex;
@@ -99,6 +108,16 @@
       border-color: #f4a259;
       background: #4b2a23;
       box-shadow: inset 0 0 0 1px rgba(244, 162, 89, 0.35);
+    }
+    .hero-float {
+      width: min(860px, calc(100% - 8px));
+      padding: 6px 4px;
+    }
+    .hero-top {
+      display: flex;
+      align-items: start;
+      justify-content: flex-start;
+      gap: 12px;
     }
     h1, h2 { margin: 0 0 10px; }
     h1 { font-size: 30px; }
@@ -206,6 +225,9 @@
       display: grid;
       gap: 12px;
     }
+    .publications-toggle {
+      margin-top: 10px;
+    }
     .pub-item {
       border-left: 2px solid #7b4c41;
       padding-left: 12px;
@@ -255,6 +277,12 @@
       .banner-overlay {
         padding: 12px;
       }
+      .overlay-top {
+        align-items: center;
+      }
+      .avatar-wrap {
+        width: 72px;
+      }
       .hero-float { width: 100%; }
       .hero-float h1 { font-size: 34px; }
       .hero-float .headline { font-size: 20px; }
@@ -267,6 +295,9 @@
       <img src="assets/homepage-banner.jpeg" alt="Cinematic banner" />
       <div class="banner-overlay">
         <div class="overlay-top">
+          <div class="avatar-wrap">
+            <img src="assets/avatar.png" alt="Yan Li avatar" />
+          </div>
           <div class="lang-switch" aria-label="Language Switch">
             <button class="lang-btn" id="langEn" type="button">English</button>
             <button class="lang-btn" id="langZh" type="button">中文</button>
@@ -302,6 +333,7 @@
     <section class="card">
       <h2 id="publicationsTitle"></h2>
       <div class="publications" id="publicationsList"></div>
+      <button class="more-btn publications-toggle" id="publicationsToggle" type="button"></button>
     </section>
 
     <p class="note" id="note"></p>
@@ -827,14 +859,55 @@
       `;
     }
 
+    const publicationState = {
+      expanded: false,
+      totalVisible: 10,
+      labels: {
+        readMore: "Read more",
+        showLess: "Show less"
+      }
+    };
+
+    function toYearValue(year) {
+      const value = Number(year);
+      return Number.isFinite(value) ? value : -1;
+    }
+
     function renderPublications(items) {
-      byId("publicationsList").innerHTML = items.map((item) => `
+      const sortedItems = [...items].sort((left, right) => {
+        const yearGap = toYearValue(right.year) - toYearValue(left.year);
+        if (yearGap !== 0) {
+          return yearGap;
+        }
+        return left.title.localeCompare(right.title);
+      });
+
+      const displayItems = publicationState.expanded
+        ? sortedItems
+        : sortedItems.slice(0, publicationState.totalVisible);
+
+      byId("publicationsList").innerHTML = displayItems.map((item) => `
         <article class="pub-item">
           <div class="pub-title">${item.title}</div>
           <div class="pub-authors">${item.authors}</div>
           <div class="pub-meta">${item.venue} · ${item.year}</div>
         </article>
       `).join("");
+
+      const toggle = byId("publicationsToggle");
+      const shouldShowToggle = sortedItems.length > publicationState.totalVisible;
+      toggle.style.display = shouldShowToggle ? "inline-block" : "none";
+      if (!shouldShowToggle) {
+        return;
+      }
+
+      toggle.textContent = publicationState.expanded
+        ? publicationState.labels.showLess
+        : publicationState.labels.readMore;
+      toggle.onclick = () => {
+        publicationState.expanded = !publicationState.expanded;
+        renderPublications(items);
+      };
     }
 
     function initExpandables() {
@@ -867,6 +940,10 @@
       byId("experienceTitle").textContent = copy.experienceTitle;
       byId("publicationsTitle").textContent = copy.publicationsTitle;
       byId("note").textContent = copy.note;
+
+      publicationState.expanded = false;
+      publicationState.labels.readMore = copy.readMore;
+      publicationState.labels.showLess = copy.showLess;
 
       renderAbout(copy.about, copy);
       renderExperience(copy.experience, copy);
